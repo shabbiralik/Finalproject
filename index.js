@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 mongoose.connect('mongodb://localhost/nodekb');
 let db = mongoose.connection;
@@ -44,6 +47,38 @@ app.use(bodyParser.json())
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Express Session Middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+  }));
+  
+  // Express Messages Middleware
+  app.use(require('connect-flash')());
+  app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+  });
+  
+  // Express Validator Middleware
+  app.use(expressValidator({
+    errorFormatter: function (param, msg, value) {
+      var namespace = param.split('.')
+        , root = namespace.shift()
+        , formParam = root;
+  
+      while (namespace.length) {
+        formParam += '[' + namespace.shift() + ']';
+      }
+      return {
+        param: formParam,
+        msg: msg,
+        value: value
+      };
+    }
+  }));
+
 
 // Home Route
 
@@ -60,32 +95,15 @@ app.get('/', function(req, res){
         }
     });
 });
-// add article route
 
-app.get('/articles/add', function(req, res){
-    res.render('add_article', {
-        title: 'Add Article'
-    });
-});
+// route files
 
-//add submit POST ROUT
+let articles = require('./routes/articles');
+let users = require('./routes/users');
+app.use('/articles', articles);
+app.use('/users', users);
 
-app.post('/articles/add', function(req, res){
-    let article = new Article();
-    article.title = req.body.title;
-    article.author = req.body.author;
-    article.body = req.body.body;
-
-    article.save(function(err){
-        if(err){
-            console.log(err);
-            return;
-        } else{
-            res.redirect('/');
-        }
-    });
-});
-
+// start server
 app.listen(3000, function() {
     console.log('Server Started on Port 3000...');
 });
