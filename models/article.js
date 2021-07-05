@@ -14,6 +14,11 @@ let articlesSchema = mongoose.Schema({
     body: {
         type: String,
         rquire: true,
+    },
+    createdOn: {
+        type: Date,
+        rquire: true,
+        default:new Date()
     }
 });
 

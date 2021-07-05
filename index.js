@@ -32,6 +32,8 @@ const app = express();
 // bring in models
 
 let Article = require('./models/article');
+let User = require('./models/user');
+
 
 
 
@@ -98,17 +100,24 @@ app.get('*', function(req, res, next){
 // Home Route
 
 app.get('/', function(req, res){
-    Article.find({}, function(err, articles){
-       console.log(articles); 
+      
+   Article.find({}, function(err, articles){
        if(err){
            console.log(err);
        } else {
-            res.render('index', {
-                title:'Article',
-                articles: articles
-            });
+          res.render('index', {
+              title:'Article',
+              articles: articles.map(a=> {
+                return {
+                  _id: a._id,
+                  title: a.title,
+                  createdOn: a.createdOn,
+                  author: User.findById(a.author).then(u=> u).name
+                }
+              })
+          });
         }
-    });
+      })
 });
 
 // route files

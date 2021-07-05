@@ -1,3 +1,8 @@
+html,body {
+    height: 100%;
+}
+
+
 .alert-error{
     color: #a94442;
     background-color: #f2dede;
@@ -9,4 +14,18 @@
     color: #3c763d;
     background-color: #dff0d8;
     border-color: #d6e9c6;
+}
+body{
+    background-image: url(../img/moroccan-flower.png);
+}
+
+footer {
+    position: fixed;
+    height: 56px;
+    bottom: 0;
+    width: 100%;
+}
+
+.full_height{
+    height: 100%;
 }
