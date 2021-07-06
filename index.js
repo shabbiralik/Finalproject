@@ -100,13 +100,12 @@ app.get('*', function(req, res, next){
 // Home Route
 
 app.get('/', function(req, res){
-      
    Article.find({}, function(err, articles){
        if(err){
            console.log(err);
        } else {
           res.render('index', {
-              title:'Article',
+              title:'Blogs',
               articles: articles.map(a=> {
                 return {
                   _id: a._id,

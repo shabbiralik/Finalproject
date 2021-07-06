@@ -2,7 +2,6 @@ html,body {
     height: 100%;
 }
 
-
 .alert-error{
     color: #a94442;
     background-color: #f2dede;
@@ -28,4 +27,16 @@ footer {
 
 .full_height{
     height: 100%;
+}
+
+.navbar-red{
+    background-color: red;
+}
+
+.navbar-brand, .nav-link{
+    color: white;
+}
+
+{
+    
 }
