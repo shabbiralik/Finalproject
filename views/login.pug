@@ -4,13 +4,13 @@ block content
   .row.align-items-center.justify-content-center.h-75
     .col
     .col.mx-auto
-      h1 Sign In 
+      h1 Welcome 
       form(method='POST', action='/users/login')
         #form-group
-          label Username:
+          label.form-label Username
           input.form-control(name='username',type='text')
         #form-group
-          label Password:
+          label.form-label Password
           input.form-control(name='password',type='password')
         br
         input.btn.btn-primary(type='submit',value='Submit')

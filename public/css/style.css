@@ -14,9 +14,6 @@ html,body {
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
-body{
-    background-image: url(../img/moroccan-flower.png);
-}
 
 footer {
     position: fixed;
@@ -30,13 +27,50 @@ footer {
 }
 
 .navbar-red{
-    background-color: red;
+    background-color: darkseagreen;
 }
 
 .navbar-brand, .nav-link{
-    color: white;
+    color: darkslategray;
+    font-weight: bold;
+}
+.article{
+    padding: 16px;
 }
 
-{
+.article-title{
+    font-size: 30px;
+    font-family: fantasy;
+    text-transform: capitalize;
+    background: white;
+    padding: 16px;
+}
+
+.article-body{
+    background-color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 8px;
+    text-align: justify;
+    font-family: monospace;
     
+}
+
+.article-action{
+    text-align: right;
+    padding: 16px;
+    margin: 16px;
+}
+
+.table{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.table  a{
+   text-decoration: none; 
+   color: black;
+}
+
+.table tr:hover td{
+    background-color: darkseagreen;
+    color: darkslategray;
 }

@@ -14,7 +14,7 @@ let User = require('../models/user');
 
 router.get('/add', ensureAuthenticated, function(req, res){
     res.render('add_article', {
-        title: 'Add Article'
+        title: 'Add Blog'
     });
 });
 
@@ -63,7 +63,7 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
             res.redirect('/');
         }
         res.render('edit_article', {
-            title:'Edit Article',
+            title:'Edit Blog',
             article:article
         });
     });

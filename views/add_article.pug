@@ -4,8 +4,8 @@ block content
   h1 #{title}
   form(method='POST', action='/articles/add')
     #form-group 
-      label Title: 
-      input.form.control(name='title', type='text')
+      label.form-label(for='title') Title
+      input.form-control(name='title', placeholder='Title', type='text')      
     #form-group 
       label Body: 
       textarea.form-control(name='body')
